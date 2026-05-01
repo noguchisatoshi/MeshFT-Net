@@ -1,4 +1,4 @@
-## MeshFT-Net Benchmarks (Analytic, OOD, Physical Consistency, Dissipative, and The Well / Acoustics)
+## MeshFT-Net Benchmarks
 
 This repo contains compact runners to evaluate structure-preserving dynamics models—centered around **MeshFT-Net**—across five tasks:
 
