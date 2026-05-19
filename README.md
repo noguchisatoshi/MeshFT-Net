@@ -117,30 +117,6 @@ bash scripts/run_computational_cost_bench.sh
 
 ---
 
-## Repository Structure
-
-```text
-.
-├── analytic_wave_bench.py
-├── dissipative_bench.py
-├── extrapolation_bench.py
-├── phys_consistency_bench.py
-├── the_well_bench.py
-├── meshft_ablation.py
-├── cost_bench.py
-├── requirements.txt
-└── scripts/
-    ├── run_analytic_wave_bench.sh
-    ├── run_ood_bench.sh
-    ├── run_phys_bench.sh
-    ├── run_dissipative_bench.sh
-    ├── run_well_bench.sh
-    ├── run_ablation.sh
-    └── run_computational_cost_bench.sh
-```
-
----
-
 ## Citation
 
 We will update this section with the formal ICML / PMLR citation once the proceedings metadata is publicly available.
