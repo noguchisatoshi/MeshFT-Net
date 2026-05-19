@@ -20,7 +20,7 @@ Learning physical dynamics on meshes is difficult because mesh topology, geometr
 In short: **fix topology, learn metric and dissipation**.
 
 <p align="center">
-  <img src="figures/framework.pdf" width="650" alt="MeshFT-Net overview">
+  <img src="figures/framework.png" width="650" alt="MeshFT-Net overview">
 </p>
 
 ---
