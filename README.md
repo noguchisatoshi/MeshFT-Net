@@ -9,19 +9,19 @@ This repository contains the **official minimal implementation** of **MeshFT-Net
 
 ## Introduction
 
-Mesh-based physics contains two fundamentally different kinds of structure: **topology** and **metric information**. Topology determines which mesh cells are connected and fixes the signed incidence relationships between nodes, edges, faces, and higher-dimensional cells. Metric information, material response, and dissipation determine how fields store, exchange, and lose energy on that topology.
+Mesh-based physics contains two fundamentally different kinds of structure: **topology** and **metric** structures. Topology determines which mesh cells are connected and fixes the signed incidence relationships between nodes, edges, faces, and higher-dimensional cells. Metric structure including material response and dissipation determine how fields store, exchange, and lose energy on that topology.
 
 Generic neural simulators often mix these roles inside learned message passing or learned operators. This can lead to unstable long-horizon rollouts, energy drift, and non-physical modes.
 
-**Mesh Field Theory (MeshFT)** makes the topology--metric separation explicit. In the paper, we prove a local reduction theorem showing that, under locality, permutation equivariance, orientation covariance, and energy balance/passivity, admissible mesh dynamics admit a port--Hamiltonian factorization: the conservative interconnection is fixed by mesh topology, while metric-dependent and dissipative effects remain learnable.
+**Mesh Field Theory (MeshFT)** makes the topology--metric separation explicit. In the paper, we prove a local reduction theorem showing that, under locality, permutation equivariance, orientation covariance, and energy balance/passivity, admissible mesh dynamics admit a port--Hamiltonian factorization shown in the following figure. Thus, the conservative interconnection is fixed by mesh topology, while metric-dependent and dissipative effects remain learnable.
 
 **MeshFT-Net** is the neural realization of this result:
 
 * it fixes the **topological conservative structure** using signed incidence operators from the mesh,
-* it learns the **metric, material, and dissipative effects** from data,
+* it learns the **metric structures such as material, and dissipative effects** from data,
 * it is designed for stable and physically faithful rollout as a neural simulator.
 
-In short: **fix topology; learn metric and dissipation**.
+In short: **fix topology and only learn metric**.
 
 <p align="center">
   <img src="figures/framework.png" width="650" alt="MeshFT-Net overview">
