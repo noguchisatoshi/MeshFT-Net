@@ -9,15 +9,19 @@ This repository contains the **official minimal implementation** of **MeshFT-Net
 
 ## Introduction
 
-Learning physical dynamics on meshes is difficult because mesh topology, geometry, material response, and dissipation are often mixed together inside a generic neural network. This can lead to unstable long-horizon rollouts, energy drift, and non-physical modes.
+Mesh-based physics contains two fundamentally different kinds of structure: **topology** and **metric information**. Topology determines which mesh cells are connected and fixes the signed incidence relationships between nodes, edges, faces, and higher-dimensional cells. Metric information, material response, and dissipation determine how fields store, exchange, and lose energy on that topology.
 
-**Mesh Field Theory (MeshFT)** separates these roles:
+Generic neural simulators often mix these roles inside learned message passing or learned operators. This can lead to unstable long-horizon rollouts, energy drift, and non-physical modes.
 
-* the **topological conservative structure** is fixed by signed incidence operators from the mesh,
-* the **metric, material, and dissipative effects** are learned from data,
-* the resulting model, **MeshFT-Net**, is designed to preserve physical structure while remaining trainable as a neural simulator.
+**Mesh Field Theory (MeshFT)** makes the topology--metric separation explicit. In the paper, we prove a local reduction theorem showing that, under locality, permutation equivariance, orientation covariance, and energy balance/passivity, admissible mesh dynamics admit a port--Hamiltonian factorization: the conservative interconnection is fixed by mesh topology, while metric-dependent and dissipative effects remain learnable.
 
-In short: **fix topology, learn metric and dissipation**.
+**MeshFT-Net** is the neural realization of this result:
+
+* it fixes the **topological conservative structure** using signed incidence operators from the mesh,
+* it learns the **metric, material, and dissipative effects** from data,
+* it is designed for stable and physically faithful rollout as a neural simulator.
+
+In short: **fix topology; learn metric and dissipation**.
 
 <p align="center">
   <img src="figures/framework.png" width="650" alt="MeshFT-Net overview">
@@ -27,9 +31,9 @@ In short: **fix topology, learn metric and dissipation**.
 
 ## Contents
 
-This repository comprises compact benchmark runners for the main experiments in the paper:
+This repository includes compact benchmark runners for the main experiments in the paper:
 
-* **Analytic Wave Benchmark**: closed-form 2D plane waves on grid and Delaunay meshes; evaluates one-step error, rollout error, and energy drift.
+* **Analytic Wave Benchmark**: closed-form 2D plane waves on grid and Delaunay meshes. Evaluate one-step error, rollout error, and energy drift.
 * **OOD Benchmark**: frequency, resolution, parameter, and long-horizon extrapolation for analytic wave dynamics.
 * **Physical Consistency Benchmark**: diagnostics such as wave-speed error, canonical consistency, PDE residual, equipartition, and momentum conservation.
 * **Dissipative Benchmark**: controlled damped wave dynamics for testing learned dissipation and energy decay.
@@ -47,12 +51,6 @@ Create a clean environment and install the required packages:
 conda create -n meshft-net python=3.10 -y
 conda activate meshft-net
 pip install -r requirements.txt
-```
-
-The scripts use CUDA by default when available. On a CPU-only machine, use:
-
-```bash
-DEVICE=cpu bash scripts/run_analytic_wave_bench.sh
 ```
 
 ---
