@@ -13,7 +13,7 @@ Mesh-based physics contains two fundamentally different kinds of structure: **to
 
 Generic neural simulators often mix these roles inside learned message passing or learned operators. This can lead to unstable long-horizon rollouts, energy drift, and non-physical modes.
 
-**Mesh Field Theory (MeshFT)** makes the topology--metric separation explicit. In the paper, we prove a local reduction theorem showing that, under locality, permutation equivariance, orientation covariance, and energy balance/passivity, admissible mesh dynamics admit a port--Hamiltonian factorization shown in the following figure. Thus, the conservative interconnection is fixed by mesh topology, while metric-dependent and dissipative effects remain learnable.
+**Mesh Field Theory (MeshFT)** makes the topology-metric separation explicit. In the paper, we prove a local reduction theorem showing that, under locality, permutation equivariance, orientation covariance, and energy balance/passivity, admissible mesh dynamics admit a port--Hamiltonian factorization shown in the following figure. Thus, the conservative interconnection is fixed by mesh topology, while metric-dependent and dissipative effects remain learnable.
 
 **MeshFT-Net** is the neural realization of this result:
 
